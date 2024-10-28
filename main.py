@@ -10,7 +10,7 @@ phone_number = '+998337644819'  # Telefon raqamingiz, masalan: '+123456789'
 keyword_file = 'keyWord.txt'
 
 # Xabarni yuborish kerak bo'lgan guruh ID'si
-target_group_id = -4575593591  # Xabar yuboriladigan guruh ID
+target_group_id = -10012345678  # Xabar yuboriladigan guruh ID
 
 # Kalit so'zlar ro'yxatini yuklash funksiyasi
 def load_keywords():
@@ -24,8 +24,8 @@ def add_keyword(new_keyword):
     with open(keyword_file, 'a', encoding='utf-8') as f:
         f.write(f'{new_keyword}\n')
 
-# Telegram mijozini yaratish
-app = Client("my_account", api_id=api_id, api_hash=api_hash, phone_number=phone_number)
+# Telegram mijozini yaratish (MemoryStorage bilan)
+app = Client("my_account", api_id=api_id, api_hash=api_hash, no_updates=True)
 
 # Yangi xabar uchun hodisa
 @app.on_message(filters.text | filters.voice)
